@@ -126,10 +126,11 @@
   justify-content: center;
   gap: 0.75rem;
   background-color: var(--text-primary);
+  color: var(--bg-primary);
 }
 
 .camera-btn:hover {
-  background-color: #000;
+  background-color: var(--text-secondary);
 }
 
 .camera-btn.scanning {
