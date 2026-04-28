@@ -6,7 +6,7 @@
 
 .reports-table th {
   padding: 1rem 1.5rem;
-  background-color: #f8fafc;
+  background-color: var(--bg-primary);
   color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.875rem;
@@ -26,7 +26,7 @@
 }
 
 .reports-table tr:hover {
-  background-color: #f8fafc;
+  background-color: var(--bg-primary);
 }
 
 .report-id-cell {

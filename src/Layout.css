@@ -127,6 +127,45 @@
   padding: 2rem;
 }
 
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-sidebar);
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+}
+
+.topbar .theme-toggle {
+  color: var(--text-primary);
+}
+
+.topbar .theme-toggle:hover {
+  background-color: var(--border-color);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.dealership-info {
+  padding: 0 1.5rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
@@ -197,5 +236,14 @@
   .content-area {
     padding: 1rem;
   }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: flex;
+  }
 }
+
 

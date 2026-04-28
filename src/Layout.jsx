@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Upload, FileText, Settings, LogOut, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, Upload, FileText, LogOut, ShieldAlert, Sun, Moon } from 'lucide-react';
+import { ThemeContext } from './App';
 import './Layout.css';
 
 const Layout = () => {
   const location = useLocation();
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -20,6 +23,11 @@ const Layout = () => {
             <ShieldAlert size={32} color="#dc2626" />
             <h2>DealerGuard AI</h2>
           </div>
+          <button className="theme-toggle mobile-only" onClick={toggleTheme} aria-label="Toggle Theme">
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+        </div>
+        <div className="dealership-info">
           <p className="dealership-name">TATA Motors - Delhi South</p>
         </div>
 
@@ -53,9 +61,14 @@ const Layout = () => {
       
       <main className="main-content">
         <header className="topbar">
-          <div className="user-profile">
-            <div className="avatar">A</div>
-            <span>Admin User</span>
+          <div className="topbar-actions">
+            <button className="theme-toggle desktop-only" onClick={toggleTheme} aria-label="Toggle Theme">
+              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <div className="user-profile">
+              <div className="avatar">A</div>
+              <span>Admin User</span>
+            </div>
           </div>
         </header>
         <div className="content-area">
@@ -65,5 +78,6 @@ const Layout = () => {
     </div>
   );
 };
+
 
 export default Layout;
