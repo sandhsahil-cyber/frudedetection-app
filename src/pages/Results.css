@@ -422,6 +422,7 @@
   }
   .page-header-actions button {
     width: 100%;
+    justify-content: center;
   }
   .side-panel {
     width: 100%;
@@ -440,14 +441,29 @@
     border-bottom: none;
   }
   .table-header-controls {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
   .filter-group {
-    flex-wrap: wrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+  .filter-group::-webkit-scrollbar {
+    display: none;
   }
   .filter-btn {
-    flex: 1;
-    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .summary-cards {
+    grid-template-columns: 1fr 1fr;
   }
 }
+
 
