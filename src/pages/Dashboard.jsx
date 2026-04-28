@@ -67,40 +67,8 @@ const Dashboard = () => {
             <h3>Fraud Cases by Outlet Name</h3>
           </div>
           <div className="horizontal-bar-chart">
-            <div className="hbar-row">
-              <span className="hbar-label">Delhi South</span>
-              <div className="hbar-track">
-                <div className="hbar-fill red" style={{ width: '85%' }}></div>
-              </div>
-              <span className="hbar-value">85</span>
-            </div>
-            <div className="hbar-row">
-              <span className="hbar-label">Mumbai West</span>
-              <div className="hbar-track">
-                <div className="hbar-fill red" style={{ width: '65%' }}></div>
-              </div>
-              <span className="hbar-value">65</span>
-            </div>
-            <div className="hbar-row">
-              <span className="hbar-label">Rajkot Central</span>
-              <div className="hbar-track">
-                <div className="hbar-fill yellow" style={{ width: '45%' }}></div>
-              </div>
-              <span className="hbar-value">45</span>
-            </div>
-            <div className="hbar-row">
-              <span className="hbar-label">Chennai North</span>
-              <div className="hbar-track">
-                <div className="hbar-fill yellow" style={{ width: '38%' }}></div>
-              </div>
-              <span className="hbar-value">38</span>
-            </div>
-            <div className="hbar-row">
-              <span className="hbar-label">Bangalore East</span>
-              <div className="hbar-track">
-                <div className="hbar-fill yellow" style={{ width: '22%' }}></div>
-              </div>
-              <span className="hbar-value">22</span>
+            <div style={{ textAlign: 'center', padding: '3rem 0', color: 'var(--text-secondary)' }}>
+              No fraud cases reported yet.
             </div>
           </div>
         </div>
@@ -109,25 +77,9 @@ const Dashboard = () => {
           <div className="card-header">
             <h3>Document Types Analyzed</h3>
           </div>
-          <div className="pie-chart-container">
-            <div className="pie-chart"></div>
-            <div className="pie-legend">
-              <div className="legend-item">
-                <span className="legend-color" style={{ backgroundColor: 'var(--primary)' }}></span>
-                <span>Vehicle Sales (40%)</span>
-              </div>
-              <div className="legend-item">
-                <span className="legend-color" style={{ backgroundColor: 'var(--success)' }}></span>
-                <span>Spare Parts (30%)</span>
-              </div>
-              <div className="legend-item">
-                <span className="legend-color" style={{ backgroundColor: 'var(--warning)' }}></span>
-                <span>Service (20%)</span>
-              </div>
-              <div className="legend-item">
-                <span className="legend-color" style={{ backgroundColor: 'var(--danger)' }}></span>
-                <span>Accounts/Admin (10%)</span>
-              </div>
+          <div className="pie-chart-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '200px' }}>
+            <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>
+              No document data available.
             </div>
           </div>
         </div>
