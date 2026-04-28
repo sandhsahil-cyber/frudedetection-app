@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { Download, AlertTriangle, CheckCircle, HelpCircle, X, FileImage, FileSpreadsheet } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Download, AlertTriangle, CheckCircle, HelpCircle, X, FileImage, FileSpreadsheet, Upload } from 'lucide-react';
 import './Results.css';
 
 const Results = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { data: passedData = [], outlet = '', uploadDate = new Date().toLocaleDateString('en-IN') } = location.state || {};
+
   const [filter, setFilter] = useState('all');
   const [selectedRow, setSelectedRow] = useState(null);
-
-  // Dummy Data for TATA Motors
-  const initialData = [];
-
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(passedData);
+  const hasData = data.length > 0;
 
   const markAsReviewed = (e, id) => {
     e.stopPropagation();
@@ -52,12 +54,23 @@ const Results = () => {
       <div className="page-header-actions">
         <div>
           <h1>Analysis Results</h1>
-          <p>Comparison report for batch uploaded on {new Date().toLocaleDateString()}</p>
+          <p>Batch uploaded on {uploadDate}{outlet ? ` · ${outlet.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}` : ''}</p>
         </div>
         <button className="btn-primary flex-center gap-2" style={{ backgroundColor: '#dc2626' }}>
           <Download size={18} /> Export to PDF
         </button>
       </div>
+
+      {!hasData ? (
+        <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📂</div>
+          <h2 style={{ marginBottom: '0.75rem' }}>No Analysis Data</h2>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>Upload a Tally export or scanned invoices to run fraud detection.</p>
+          <button className="btn-primary" onClick={() => navigate('/upload')} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Upload size={16} /> Go to Upload
+          </button>
+        </div>
+      ) : (<>
 
       <div className="summary-cards">
         <div className="stat-card" onClick={() => setFilter('all')} style={{ cursor: 'pointer' }}>
@@ -225,6 +238,7 @@ const Results = () => {
           </div>
         </div>
       )}
+      </>)}
     </div>
   );
 };
