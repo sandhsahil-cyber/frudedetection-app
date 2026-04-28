@@ -1,0 +1,95 @@
+import { useNavigate } from 'react-router-dom';
+import { ShieldAlert, ScanLine, FileSpreadsheet, BellRing, CheckCircle2 } from 'lucide-react';
+import './Landing.css';
+
+const Landing = () => {
+  const navigate = useNavigate();
+
+  const handleDemoRequest = () => {
+    navigate('/dashboard');
+  };
+
+  const features = [
+    {
+      title: "Smart OCR Scanning",
+      description: "Extract data from scanned invoices and receipts with 99.8% accuracy using our automotive-trained AI models.",
+      icon: <ScanLine size={32} />
+    },
+    {
+      title: "Tally Integration",
+      description: "Seamlessly cross-reference your uploaded documents with exported Tally ERP data in seconds.",
+      icon: <FileSpreadsheet size={32} />
+    },
+    {
+      title: "Real-time Fraud Alerts",
+      description: "Instantly detect manipulated amounts, fake vendors, and duplicate entries before payments are made.",
+      icon: <BellRing size={32} />
+    }
+  ];
+
+  return (
+    <div className="landing-page">
+      {/* Navigation */}
+      <nav className="landing-nav">
+        <div className="nav-container">
+          <div className="brand">
+            <ShieldAlert size={32} color="#2563eb" />
+            <span className="brand-name">DealerGuard AI</span>
+          </div>
+          <div className="nav-actions">
+            <button className="login-btn" onClick={handleDemoRequest}>Login</button>
+            <button className="btn-primary" onClick={handleDemoRequest}>Request Demo</button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <div className="badge">New: AI Models Updated for 2024</div>
+          <h1 className="hero-title">AI-Powered Fraud Detection for Car Dealerships</h1>
+          <p className="hero-subtitle">
+            Protect your dealership's margins. Automatically reconcile Tally entries with physical invoices to catch discrepancies, vendor fraud, and duplicate bills instantly.
+          </p>
+          <div className="hero-actions">
+            <button className="btn-primary hero-btn" onClick={handleDemoRequest}>Request a Demo</button>
+            <button className="btn-secondary hero-btn">See How it Works</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="features-section">
+        <div className="section-header">
+          <h2>Why Choose DealerGuard AI?</h2>
+          <p>Built specifically for the Indian automotive retail sector to stop revenue leakage.</p>
+        </div>
+        
+        <div className="features-grid">
+          {features.map((feature, index) => (
+            <div key={index} className="feature-card">
+              <div className="feature-icon-wrapper">
+                {feature.icon}
+              </div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="landing-footer">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <ShieldAlert size={24} color="#2563eb" />
+            <span>DealerGuard AI</span>
+          </div>
+          <p>© 2024 DealerGuard AI Solutions. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Landing;
