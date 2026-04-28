@@ -169,6 +169,8 @@
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
   }
   
   .sidebar {
@@ -178,13 +180,21 @@
   }
   
   .sidebar-header {
-    padding: 0.75rem 1rem;
+    padding: 0.65rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
+  .logo-container h2 {
+    font-size: 1.1rem;
+  }
   
   .dealership-name {
+    display: none;
+  }
+
+  .dealership-info {
     display: none;
   }
   
@@ -199,6 +209,7 @@
     scrollbar-width: none;
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
+    padding: 0 0.25rem;
   }
   
   .sidebar-nav ul::-webkit-scrollbar {
@@ -206,19 +217,25 @@
   }
   
   .nav-link {
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 0.75rem;
     border-left: none;
     border-bottom: 3px solid transparent;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
+    gap: 0.25rem;
+    font-size: 0.65rem;
     white-space: nowrap;
+    min-width: 60px;
+  }
+
+  .nav-link svg {
+    width: 18px;
+    height: 18px;
   }
   
   .nav-link span {
-    font-size: 0.875rem;
+    font-size: 0.65rem;
   }
   
   .nav-link.active {
@@ -231,15 +248,12 @@
   }
   
   .topbar {
-    padding: 0.75rem 1rem;
-  }
-  
-  .topbar-actions {
-    gap: 0.75rem;
+    display: none;
   }
   
   .content-area {
-    padding: 1rem 0.5rem;
+    padding: 1rem;
+    overflow-x: hidden;
   }
 
   .desktop-only {
@@ -248,6 +262,10 @@
 
   .mobile-only {
     display: flex;
+  }
+
+  .main-content {
+    overflow-x: hidden;
   }
 }
 
