@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShieldAlert, ScanLine, FileSpreadsheet, BellRing, Sun, Moon } from 'lucide-react';
+import { ShieldAlert, ScanLine, FileSpreadsheet, BellRing, Sun, Moon, User, Phone, Globe } from 'lucide-react';
 import { ThemeContext } from '../App';
 import './Landing.css';
 
@@ -99,8 +99,20 @@ const Landing = () => {
           
           <div className="footer-contact">
             <h4>Contact Us</h4>
-            <p><strong>Founder:</strong> Sahil</p>
-            <p><strong>Phone:</strong> +91 9737462043</p>
+            <div className="contact-item">
+              <User size={18} className="contact-icon" />
+              <p><strong>Founder:</strong> Sahil</p>
+            </div>
+            <div className="contact-item">
+              <Phone size={18} className="contact-icon" />
+              <p><strong>Phone:</strong> +91 9737462043</p>
+            </div>
+            <div className="contact-item">
+              <Globe size={18} className="contact-icon" />
+              <a href="https://www.14techsolutions.com" target="_blank" rel="noreferrer" className="website-link">
+                www.14techsolutions.com
+              </a>
+            </div>
           </div>
         </div>
         
