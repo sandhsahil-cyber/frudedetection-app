@@ -287,3 +287,17 @@
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
+
+@media (max-width: 768px) {
+  .upload-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .drop-zone {
+    padding: 2rem 1rem;
+  }
+  .processing-card {
+    padding: 1.5rem;
+  }
+}
+

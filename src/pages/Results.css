@@ -29,11 +29,6 @@
 .yellow-text { color: var(--warning); }
 .red-text { color: var(--danger); }
 
-.table-container {
-  padding: 0;
-  overflow: hidden;
-}
-
 .table-header-controls {
   padding: 1.5rem;
   border-bottom: 1px solid var(--border-color);
@@ -64,10 +59,6 @@
   background-color: var(--text-primary);
   color: white;
   border-color: var(--text-primary);
-}
-
-.table-wrapper {
-  overflow-x: auto;
 }
 
 .results-table {
@@ -415,3 +406,41 @@
   font-weight: 600;
   white-space: nowrap;
 }
+
+@media (max-width: 768px) {
+  .page-header-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .page-header-actions button {
+    width: 100%;
+  }
+  .side-panel {
+    width: 100%;
+    max-width: 100vw;
+  }
+  .side-panel-content {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .panel-col {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+  }
+  .panel-col:last-child {
+    border-bottom: none;
+  }
+  .table-header-controls {
+    padding: 1rem;
+  }
+  .filter-group {
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
