@@ -139,35 +139,46 @@
   }
   
   .sidebar-header {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
   .dealership-name {
-    display: none; /* Hide on small screens to save space */
+    display: none;
   }
   
   .sidebar-nav {
     padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .sidebar-nav ul {
     display: flex;
     overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    justify-content: space-around;
   }
   
   .sidebar-nav ul::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
   }
   
   .nav-link {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     border-left: none;
     border-bottom: 3px solid transparent;
-    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+  }
+  
+  .nav-link span {
+    /* Keeping text but making it very small */
+    font-size: 0.65rem;
   }
   
   .nav-link.active {
@@ -176,16 +187,15 @@
   }
   
   .sidebar-footer {
-    display: none; /* Usually hide logout from bottom nav on mobile, or put it in topbar */
+    display: none;
   }
   
   .topbar {
-    height: 56px;
-    padding: 0 1rem;
-    border-bottom: 1px solid var(--border-color);
+    display: none; /* Hide admin user bar on mobile to save space */
   }
   
   .content-area {
     padding: 1rem;
   }
 }
+
