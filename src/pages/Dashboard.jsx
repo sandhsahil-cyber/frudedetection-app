@@ -10,13 +10,7 @@ const Dashboard = () => {
     }).format(value);
   };
 
-  const recentAlerts = [
-    { id: 'INV-TM-891', outlet: 'Delhi South', date: 'Today, 10:30 AM', amount: 150000, reason: 'Amount mismatch' },
-    { id: 'INV-TM-885', outlet: 'Mumbai West', date: 'Today, 09:15 AM', amount: 85000, reason: 'Invalid vendor GSTIN' },
-    { id: 'INV-TM-870', outlet: 'Rajkot Central', date: 'Yesterday, 04:45 PM', amount: 450000, reason: 'Duplicate invoice' },
-    { id: 'INV-TM-862', outlet: 'Bangalore East', date: 'Yesterday, 02:20 PM', amount: 25000, reason: 'Date altered manually' },
-    { id: 'INV-TM-855', outlet: 'Chennai North', date: '26 Oct, 11:00 AM', amount: 120000, reason: 'Unregistered vendor' },
-  ];
+  const recentAlerts = [];
 
   return (
     <div className="dashboard">
@@ -32,7 +26,7 @@ const Dashboard = () => {
           </div>
           <div className="stat-info">
             <p className="stat-label">Total Outlets Monitored</p>
-            <h3 className="stat-value">12</h3>
+            <h3 className="stat-value">0</h3>
           </div>
         </div>
 
@@ -42,7 +36,7 @@ const Dashboard = () => {
           </div>
           <div className="stat-info">
             <p className="stat-label">Docs Processed (This Month)</p>
-            <h3 className="stat-value">14,850</h3>
+            <h3 className="stat-value">0</h3>
           </div>
         </div>
 
@@ -52,7 +46,7 @@ const Dashboard = () => {
           </div>
           <div className="stat-info">
             <p className="stat-label">Fraud Detected (This Month)</p>
-            <h3 className="stat-value danger-text">342</h3>
+            <h3 className="stat-value danger-text">0</h3>
           </div>
         </div>
 
@@ -62,7 +56,7 @@ const Dashboard = () => {
           </div>
           <div className="stat-info">
             <p className="stat-label">Amount at Risk (₹)</p>
-            <h3 className="stat-value warning-text">{formatCurrency(8540000)}</h3>
+            <h3 className="stat-value warning-text">{formatCurrency(0)}</h3>
           </div>
         </div>
       </div>
@@ -143,29 +137,37 @@ const Dashboard = () => {
             <h3>Recent Fraud Alerts (Last 5)</h3>
             <button className="view-all-btn">View All</button>
           </div>
-          <ul className="activity-list">
-            {recentAlerts.map((alert, index) => (
-              <li key={index} className="activity-item premium-row">
-                <div className="activity-icon red-pulse"><AlertTriangle size={18} /></div>
-                <div className="activity-details flex-1">
-                  <div className="alert-header">
-                    <div className="alert-title">
-                      <span className="alert-badge">{alert.id}</span>
-                      <span className="alert-outlet">{alert.outlet}</span>
+          <div className="activity-list" style={{ padding: '0 1rem' }}>
+            {recentAlerts.length === 0 ? (
+              <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
+                No recent fraud alerts.
+              </div>
+            ) : (
+              <ul className="activity-list">
+                {recentAlerts.map((alert, index) => (
+                  <li key={index} className="activity-item premium-row">
+                    <div className="activity-icon red-pulse"><AlertTriangle size={18} /></div>
+                    <div className="activity-details flex-1">
+                      <div className="alert-header">
+                        <div className="alert-title">
+                          <span className="alert-badge">{alert.id}</span>
+                          <span className="alert-outlet">{alert.outlet}</span>
+                        </div>
+                        <span className="alert-amount danger-text font-bold">{formatCurrency(alert.amount)}</span>
+                      </div>
+                      <div className="alert-meta">
+                        <span className="reason"><span className="dot"></span>{alert.reason}</span>
+                        <span className="time">{alert.date}</span>
+                      </div>
                     </div>
-                    <span className="alert-amount danger-text font-bold">{formatCurrency(alert.amount)}</span>
-                  </div>
-                  <div className="alert-meta">
-                    <span className="reason"><span className="dot"></span>{alert.reason}</span>
-                    <span className="time">{alert.date}</span>
-                  </div>
-                </div>
-                <div className="row-action">
-                  <ChevronRight size={20} className="chevron-icon" />
-                </div>
-              </li>
-            ))}
-          </ul>
+                    <div className="row-action">
+                      <ChevronRight size={20} className="chevron-icon" />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </div>

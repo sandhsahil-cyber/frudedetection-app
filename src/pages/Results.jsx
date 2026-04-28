@@ -7,28 +7,7 @@ const Results = () => {
   const [selectedRow, setSelectedRow] = useState(null);
 
   // Dummy Data for TATA Motors
-  const initialData = [
-    { id: 'INV-23-001', date: '12 Oct 2023', amtTally: 450000, amtDoc: 450000, venTally: 'MRF Tyres Ltd', venDoc: 'MRF Tyres Ltd', status: 'match', score: 5 },
-    { id: 'INV-23-002', date: '12 Oct 2023', amtTally: 12500, amtDoc: 12500, venTally: 'Castrol India', venDoc: 'Castrol India', status: 'match', score: 2 },
-    { id: 'INV-23-003', date: '13 Oct 2023', amtTally: 89000, amtDoc: 89000, venTally: 'Bosch Auto Parts', venDoc: 'Bosh Auto Parts', status: 'partial', score: 35 },
-    { id: 'INV-23-004', date: '14 Oct 2023', amtTally: 250000, amtDoc: 250000, venTally: 'Exide Industries', venDoc: 'Exide Industries', status: 'match', score: 8 },
-    { id: 'INV-23-005', date: '14 Oct 2023', amtTally: 65000, amtDoc: 165000, venTally: 'Amara Raja Batteries', venDoc: 'Amara Raja Batteries', status: 'fraud', score: 92 },
-    { id: 'INV-23-006', date: '15 Oct 2023', amtTally: 34000, amtDoc: 34000, venTally: 'Minda Industries', venDoc: 'Minda Industries', status: 'match', score: 4 },
-    { id: 'INV-23-007', date: '16 Oct 2023', amtTally: 120000, amtDoc: 120000, venTally: 'Gabriel India', venDoc: 'Gabriel India', status: 'match', score: 6 },
-    { id: 'INV-23-008', date: '16 Oct 2023', amtTally: 45000, amtDoc: 45000, venTally: 'Unknown Vendor', venDoc: 'Lumax Auto Tech', status: 'fraud', score: 88 },
-    { id: 'INV-23-009', date: '17 Oct 2023', amtTally: 78000, amtDoc: 78500, venTally: 'Subros Ltd', venDoc: 'Subros Ltd', status: 'partial', score: 45 },
-    { id: 'INV-23-010', date: '18 Oct 2023', amtTally: 55000, amtDoc: 55000, venTally: 'Endurance Tech', venDoc: 'Endurance Tech', status: 'match', score: 3 },
-    { id: 'INV-23-011', date: '18 Oct 2023', amtTally: 92000, amtDoc: 92000, venTally: 'Motherson Sumi', venDoc: 'Motherson Sumi', status: 'match', score: 7 },
-    { id: 'INV-23-012', date: '19 Oct 2023', amtTally: 300000, amtDoc: 30000, venTally: 'Apollo Tyres', venDoc: 'Apollo Tyres', status: 'fraud', score: 95 },
-    { id: 'INV-23-013', date: '20 Oct 2023', amtTally: 21000, amtDoc: 21000, venTally: 'Wabco India', venDoc: 'Wabco India', status: 'match', score: 2 },
-    { id: 'INV-23-014', date: '20 Oct 2023', amtTally: 47000, amtDoc: 47000, venTally: 'Minda Corp', venDoc: 'Minda Corp', status: 'match', score: 4 },
-    { id: 'INV-23-015', date: '21 Oct 2023', amtTally: 88000, amtDoc: 88000, venTally: 'Sundram Fasteners', venDoc: 'Sundram Fast', status: 'partial', score: 25 },
-    { id: 'INV-23-016', date: '22 Oct 2023', amtTally: 150000, amtDoc: 150000, venTally: 'CEAT Tyres', venDoc: 'CEAT Tyres', status: 'match', score: 5 },
-    { id: 'INV-23-017', date: '23 Oct 2023', amtTally: 62000, amtDoc: 62000, venTally: 'Bharat Forge', venDoc: 'Bharat Forge', status: 'match', score: 3 },
-    { id: 'INV-23-018', date: '24 Oct 2023', amtTally: 400000, amtDoc: 400000, venTally: 'Mahindra CIE', venDoc: 'Mahindra CIE', status: 'match', score: 8 },
-    { id: 'INV-23-019', date: '25 Oct 2023', amtTally: 105000, amtDoc: 105000, venTally: 'Varroc Eng', venDoc: 'Varroc Eng', status: 'match', score: 6 },
-    { id: 'INV-23-020', date: '25 Oct 2023', amtTally: 25000, amtDoc: 25000, venTally: 'Duplicate Entry', venDoc: 'Fake Vendor', status: 'fraud', score: 98 },
-  ];
+  const initialData = [];
 
   const [data, setData] = useState(initialData);
 
@@ -84,25 +63,25 @@ const Results = () => {
         <div className="stat-card" onClick={() => setFilter('all')} style={{ cursor: 'pointer' }}>
           <div className="stat-info">
             <p className="stat-label">Total Documents</p>
-            <h3 className="stat-value">20</h3>
+            <h3 className="stat-value">{data.length}</h3>
           </div>
         </div>
         <div className="stat-card" onClick={() => setFilter('match')} style={{ cursor: 'pointer' }}>
           <div className="stat-info">
             <p className="stat-label">Matched</p>
-            <h3 className="stat-value green-text">13</h3>
+            <h3 className="stat-value green-text">{data.filter(d => d.status === 'match').length}</h3>
           </div>
         </div>
         <div className="stat-card" onClick={() => setFilter('partial')} style={{ cursor: 'pointer' }}>
           <div className="stat-info">
             <p className="stat-label">Partial</p>
-            <h3 className="stat-value yellow-text">3</h3>
+            <h3 className="stat-value yellow-text">{data.filter(d => d.status === 'partial').length}</h3>
           </div>
         </div>
         <div className="stat-card" onClick={() => setFilter('fraud')} style={{ cursor: 'pointer' }}>
           <div className="stat-info">
             <p className="stat-label">High Risk / Fraud</p>
-            <h3 className="stat-value red-text">4</h3>
+            <h3 className="stat-value red-text">{data.filter(d => d.status === 'fraud').length}</h3>
           </div>
         </div>
       </div>

@@ -2,13 +2,7 @@ import { FileText, Download, Filter } from 'lucide-react';
 import './Reports.css';
 
 const Reports = () => {
-  const pastReports = [
-    { id: 'REP-23-089', date: '28 Oct 2023', totalDocs: 156, matches: 142, fraud: 3, user: 'Admin User' },
-    { id: 'REP-23-088', date: '27 Oct 2023', totalDocs: 98, matches: 90, fraud: 1, user: 'Admin User' },
-    { id: 'REP-23-087', date: '26 Oct 2023', totalDocs: 210, matches: 195, fraud: 8, user: 'Ramesh Singh' },
-    { id: 'REP-23-086', date: '25 Oct 2023', totalDocs: 45, matches: 45, fraud: 0, user: 'Admin User' },
-    { id: 'REP-23-085', date: '24 Oct 2023', totalDocs: 124, matches: 110, fraud: 5, user: 'Suresh Kumar' },
-  ];
+  const pastReports = [];
 
   return (
     <div className="reports-page">
@@ -37,26 +31,34 @@ const Reports = () => {
               </tr>
             </thead>
             <tbody>
-              {pastReports.map((report) => (
-                <tr key={report.id}>
-                  <td>
-                    <div className="report-id-cell">
-                      <FileText size={16} className="text-secondary" />
-                      <span className="font-medium">{report.id}</span>
-                    </div>
-                  </td>
-                  <td>{report.date}</td>
-                  <td>{report.totalDocs}</td>
-                  <td className="green-text font-medium">{report.matches}</td>
-                  <td className={report.fraud > 0 ? 'red-text font-medium' : ''}>{report.fraud}</td>
-                  <td>{report.user}</td>
-                  <td>
-                    <button className="action-btn" title="Download PDF">
-                      <Download size={18} />
-                    </button>
+              {pastReports.length === 0 ? (
+                <tr>
+                  <td colSpan="7" style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
+                    No reports available.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                pastReports.map((report) => (
+                  <tr key={report.id}>
+                    <td>
+                      <div className="report-id-cell">
+                        <FileText size={16} className="text-secondary" />
+                        <span className="font-medium">{report.id}</span>
+                      </div>
+                    </td>
+                    <td>{report.date}</td>
+                    <td>{report.totalDocs}</td>
+                    <td className="green-text font-medium">{report.matches}</td>
+                    <td className={report.fraud > 0 ? 'red-text font-medium' : ''}>{report.fraud}</td>
+                    <td>{report.user}</td>
+                    <td>
+                      <button className="action-btn" title="Download PDF">
+                        <Download size={18} />
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
