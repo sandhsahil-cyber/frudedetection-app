@@ -232,7 +232,7 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
   border-color: rgba(220, 38, 38, 0.3);
-  background-color: white;
+  background-color: var(--bg-card);
 }
 
 .premium-row:hover .chevron-icon {
@@ -291,7 +291,7 @@
 
 .alert-badge {
   background-color: var(--text-primary);
-  color: white;
+  color: var(--bg-primary);
   padding: 0.25rem 0.6rem;
   border-radius: 0.375rem;
   font-size: 0.75rem;
