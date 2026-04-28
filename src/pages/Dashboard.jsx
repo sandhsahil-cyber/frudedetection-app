@@ -1,4 +1,4 @@
-import { Building2, FileSearch, ShieldAlert, IndianRupee, AlertTriangle } from 'lucide-react';
+import { Building2, FileSearch, ShieldAlert, IndianRupee, AlertTriangle, ChevronRight } from 'lucide-react';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -139,22 +139,29 @@ const Dashboard = () => {
         </div>
 
         <div className="card recent-activity">
-          <div className="card-header">
+          <div className="card-header flex-between">
             <h3>Recent Fraud Alerts (Last 5)</h3>
+            <button className="view-all-btn">View All</button>
           </div>
           <ul className="activity-list">
             {recentAlerts.map((alert, index) => (
-              <li key={index} className="activity-item">
-                <div className="activity-icon red"><AlertTriangle size={16} /></div>
+              <li key={index} className="activity-item premium-row">
+                <div className="activity-icon red-pulse"><AlertTriangle size={18} /></div>
                 <div className="activity-details flex-1">
                   <div className="alert-header">
-                    <p><strong>{alert.id}</strong> - {alert.outlet}</p>
-                    <span className="alert-amount danger-text font-medium">{formatCurrency(alert.amount)}</span>
+                    <div className="alert-title">
+                      <span className="alert-badge">{alert.id}</span>
+                      <span className="alert-outlet">{alert.outlet}</span>
+                    </div>
+                    <span className="alert-amount danger-text font-bold">{formatCurrency(alert.amount)}</span>
                   </div>
                   <div className="alert-meta">
-                    <span className="reason">{alert.reason}</span>
+                    <span className="reason"><span className="dot"></span>{alert.reason}</span>
                     <span className="time">{alert.date}</span>
                   </div>
+                </div>
+                <div className="row-action">
+                  <ChevronRight size={20} className="chevron-icon" />
                 </div>
               </li>
             ))}
@@ -166,3 +173,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
