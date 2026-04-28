@@ -1,9 +1,12 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShieldAlert, ScanLine, FileSpreadsheet, BellRing, CheckCircle2 } from 'lucide-react';
+import { ShieldAlert, ScanLine, FileSpreadsheet, BellRing, Sun, Moon } from 'lucide-react';
+import { ThemeContext } from '../App';
 import './Landing.css';
 
 const Landing = () => {
   const navigate = useNavigate();
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   const handleDemoRequest = () => {
     navigate('/dashboard');
@@ -37,6 +40,9 @@ const Landing = () => {
             <span className="brand-name">DealerGuard AI</span>
           </div>
           <div className="nav-actions">
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme" style={{ background: 'transparent', border: 'none', cursor: 'pointer' }}>
+              {isDarkMode ? <Sun size={20} color="var(--text-primary)" /> : <Moon size={20} color="var(--text-primary)" />}
+            </button>
             <button className="login-btn" onClick={handleDemoRequest}>Login</button>
             <button className="btn-primary" onClick={handleDemoRequest}>Request Demo</button>
           </div>
