@@ -84,14 +84,32 @@ const Landing = () => {
         </div>
       </section>
 
+      {/* About Section */}
+      <section className="about-section" style={{ padding: '4rem 2rem', maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+        <div className="section-header" style={{ marginBottom: '2.5rem' }}>
+          <h2>About Us</h2>
+          <p>Built with precision to protect your business.</p>
+        </div>
+        <div className="card feature-card" style={{ padding: '3rem 2rem', margin: '0 auto' }}>
+          <h3 style={{ fontSize: '1.75rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>14 Ai Automation</h3>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.6' }}>
+            We specialize in building cutting-edge AI and automation solutions that eliminate manual inefficiencies and detect discrepancies in real-time. DealerGuard AI is our flagship product tailored for the automotive industry.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', color: 'var(--text-primary)', fontSize: '1.125rem' }}>
+            <p><strong>Founder:</strong> Sahil</p>
+            <p><strong>Contact:</strong> +91 9737462043</p>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="landing-footer">
         <div className="footer-content">
           <div className="footer-brand">
-            <ShieldAlert size={24} color="#2563eb" />
-            <span>DealerGuard AI</span>
+            <ShieldAlert size={24} color="var(--primary)" />
+            <span>14 Ai Automation</span>
           </div>
-          <p>© 2024 DealerGuard AI Solutions. All rights reserved.</p>
+          <p>© 2024 14 Ai Automation. All rights reserved.</p>
         </div>
       </footer>
     </div>
